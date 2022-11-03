@@ -1,0 +1,13 @@
+node_modules/
+bin/
+config/
+db/
+lib/
+log/
+public/
+spec/
+storage/
+tmp/
+vendor/
+babel.config.js
+app/javascript/packs/
