@@ -206,3 +206,6 @@ MODELS:
 - to ensure a user cannot make a new apartment that already exists in the database
 - to ensure a user cannot update an apartment with nil values
 - to ensure a user cannot update another user's apartment
+
+### Location of files
+
