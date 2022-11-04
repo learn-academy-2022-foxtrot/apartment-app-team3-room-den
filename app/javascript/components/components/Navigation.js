@@ -1,5 +1,5 @@
 import React from "react";
-import { Nav, NavItem } from "reactstrap";
+import { Nav, NavItem, Button } from "reactstrap";
 import { NavLink } from "react-router-dom";
 
 const Navigation = ({
@@ -13,23 +13,31 @@ const Navigation = ({
     <>
       <Nav>
         <NavItem>
-          <NavLink to="/" className="nav-link">
-            Home
-          </NavLink>
+          <Button>
+            <NavLink to="/" className="nav-link">
+              Home
+            </NavLink>
+          </Button>
         </NavItem>
         {logged_in && (
           <>
-            <NavItem>
-              <a href={sign_out_route} className="nav-link">
-                Sign Out
-              </a>
-            </NavItem>
-            <NavLink to="/available-apartments" className="nav-link">
-              My Listings
-            </NavLink>
-            <NavLink to="/available-apartments" className="nav-link">
-              View Listings
-            </NavLink>
+            <Button>
+              <NavItem>
+                <a href={sign_out_route} className="nav-link">
+                  Sign Out
+                </a>
+              </NavItem>
+            </Button>
+            <Button>
+              <NavLink to="/available-apartments" className="nav-link">
+                My Listings
+              </NavLink>
+            </Button>
+            <Button>
+              <NavLink to="/available-apartments" className="nav-link">
+                View Listings
+              </NavLink>
+            </Button>
           </>
         )}
         {!logged_in && (
