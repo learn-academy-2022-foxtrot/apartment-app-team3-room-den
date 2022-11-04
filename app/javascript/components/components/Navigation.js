@@ -38,6 +38,11 @@ const Navigation = ({
                 View Listings
               </NavLink>
             </Button>
+            <Button>
+              <NavLink to="/apartmentnew" className="nav-link">
+                New Listing
+              </NavLink>
+            </Button>
           </>
         )}
         {!logged_in && (
