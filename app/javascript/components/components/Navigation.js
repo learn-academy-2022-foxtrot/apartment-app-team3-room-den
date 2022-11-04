@@ -1,28 +1,44 @@
-import React from "react"
-import { Nav, NavItem } from "reactstrap"
-import { NavLink } from "react-router-dom"
+import React from "react";
+import { Nav, NavItem, Button } from "reactstrap";
+import { NavLink } from "react-router-dom";
 
 const Navigation = ({
   logged_in,
   current_user,
   new_user_route,
   sign_in_route,
-  sign_out_route
+  sign_out_route,
 }) => {
   return (
     <>
       <Nav>
         <NavItem>
-          <NavLink to="/" className="nav-link">
-            Home
-          </NavLink>
+          <Button>
+            <NavLink to="/" className="nav-link">
+              Home
+            </NavLink>
+          </Button>
         </NavItem>
         {logged_in && (
-          <NavItem>
-            <a href={sign_out_route} className="nav-link">
-              Sign Out
-            </a>
-          </NavItem>
+          <>
+            <Button>
+              <NavItem>
+                <a href={sign_out_route} className="nav-link">
+                  Sign Out
+                </a>
+              </NavItem>
+            </Button>
+            <Button>
+              <NavLink to="/available-apartments" className="nav-link">
+                My Listings
+              </NavLink>
+            </Button>
+            <Button>
+              <NavLink to="/available-apartments" className="nav-link">
+                View Listings
+              </NavLink>
+            </Button>
+          </>
         )}
         {!logged_in && (
           <NavItem>
@@ -40,7 +56,7 @@ const Navigation = ({
         )}
       </Nav>
     </>
-  )
-}
+  );
+};
 
-export default Navigation
+export default Navigation;
