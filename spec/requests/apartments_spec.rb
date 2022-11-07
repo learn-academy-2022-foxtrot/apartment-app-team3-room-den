@@ -36,30 +36,30 @@ RSpec.describe "Apartments", type: :request do
   # -----create-----
   describe "POST /create" do
     it "creates a new apartment listing" do
-      #params to send
+      # params to send
       apartment_params = {
         apartment: {
-        street: "124 Conch Street",
-        city: "Bikini Bottom",
-        state: "Pacific Ocean",
-        manager: "Mustachio Jones",
-        email: "mjones@example.com",
-        price: "1000 sand dollars",
-        bedrooms: 2,
-        bathrooms: 2,
-        pets: "yes",
-        image: "https://images.thedailystar.net/sites/default/files/styles/very_big_201/public/feature/images/who_lives_in_a_pineapple_under_the_sea.jpg?itok=iYr37hhG",
-        user_id: user.id
+          street: "124 Conch Street",
+          city: "Bikini Bottom",
+          state: "Pacific Ocean",
+          manager: "Mustachio Jones",
+          email: "mjones@example.com",
+          price: "1000 sand dollars",
+          bedrooms: 2,
+          bathrooms: 2,
+          pets: "yes",
+          image: "https://images.thedailystar.net/sites/default/files/styles/very_big_201/public/feature/images/who_lives_in_a_pineapple_under_the_sea.jpg?itok=iYr37hhG",
+          user_id: user.id
         }
       }
 
-      #Sends the initial HTTP request to the server
-      post '/apartments', params: apartment_params
+      # Sends the initial HTTP request to the server
+      post "/apartments", params: apartment_params
 
-      #Sends back a successful server connect code
+      # Sends back a successful server connect code
       expect(response).to have_http_status(200)
       # Ensures that the created apartment contains the correct information
-      
+
       # Looks at the expected created apartment within the db
       apartment_response = JSON.parse(response.body)
       expect(apartment_response["street"]).to eq "124 Conch Street"
@@ -255,10 +255,10 @@ RSpec.describe "Apartments", type: :request do
       expect(response).to have_http_status(422)
     end
   end
-  
+
   # -----update-----
   describe "PATCH /update" do
-    it ("updates an apartment listing") do
+    it("updates an apartment listing") do
       apartment_params = {
         apartment: {
           street: "124 Conch Street",
@@ -274,12 +274,12 @@ RSpec.describe "Apartments", type: :request do
           user_id: user.id
         }
       }
-      
+
       post "/apartments", params: apartment_params
       apartment = Apartment.first
       JSON.parse(response.body)
-      
-      update_params = { 
+
+      update_params = {
         apartment: {
           street: "1 Treedome Way",
           city: "Bikini Bottom",
@@ -294,8 +294,7 @@ RSpec.describe "Apartments", type: :request do
           user_id: user.id
         }
       }
-      
-      
+
       patch "/apartments/#{apartment.id}", params: update_params
       apartment = Apartment.first
       expect(response).to have_http_status(200)
@@ -311,6 +310,30 @@ RSpec.describe "Apartments", type: :request do
       expect(apartment.image).to eq "https://cdnb.artstation.com/p/assets/images/images/029/104/549/large/nati-dias-sandy-house-3-nati.jpg?1596473772"
     end
   end
+
+  #-----destroy-----
+  describe "DELETE /destroy" do
+    it "deletes an apartment" do
+      apartment_params = {
+        apartment: {
+          street: "124 Conch Street",
+          city: "Bikini Bottom",
+          state: "Pacific Ocean",
+          manager: "Mustachio Jones",
+          email: "mjones@example.com",
+          price: "1000 sand dollars",
+          bedrooms: 2,
+          bathrooms: 2,
+          pets: "yes",
+          image:"https://images.thedailystar.net/sites/default/files/styles/very_big_201/public/feature/images/who_lives_in_a_pineapple_under_the_sea.jpg?itok=iYr37hhG",
+          user_id: user.id
+        }
+      }
+
+      post "/apartments", params: apartment_params
+      apartment = Apartment.first
+      delete "/apartments/#{apartment.id}"
+      expect(response).to have_http_status(200)
+    end
+  end
 end
-  
-  

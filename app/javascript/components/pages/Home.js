@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 const Home = () => {
   return (
@@ -9,7 +9,7 @@ const Home = () => {
         desired freedom
       </p>
     </>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
