@@ -1,9 +1,9 @@
-import React from "react";
-import { Card, CardBody } from "reactstrap";
-import { NavLink } from "react-router-dom";
+import React from "react"
+import { Card, CardBody } from "reactstrap"
+import { NavLink } from "react-router-dom"
 
 const ApartmentIndex = ({ apartments }) => {
-  console.log(apartments);
+  console.log(apartments)
   return (
     <>
       <h1>Available shit</h1>
@@ -19,10 +19,10 @@ const ApartmentIndex = ({ apartments }) => {
               </CardBody>
             </Card>
           </div>
-        );
+        )
       })}
     </>
-  );
-};
+  )
+}
 
-export default ApartmentIndex;
+export default ApartmentIndex

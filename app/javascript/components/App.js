@@ -1,32 +1,32 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React, { useState, useEffect } from "react"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
-import Footer from "./components/Footer";
-import Header from "./components/Header";
+import Footer from "./components/Footer"
+import Header from "./components/Header"
 
-import ApartmentEdit from "./pages/ApartmentEdit";
-import ApartmentIndex from "./pages/ApartmentIndex";
-import ApartmentNew from "./pages/ApartmentNew";
-import ApartmentShow from "./pages/ApartmentShow";
-import Home from "./pages/Home";
-import NotFound from "./pages/NotFound";
+import ApartmentEdit from "./pages/ApartmentEdit"
+import ApartmentIndex from "./pages/ApartmentIndex"
+import ApartmentNew from "./pages/ApartmentNew"
+import ApartmentShow from "./pages/ApartmentShow"
+import Home from "./pages/Home"
+import NotFound from "./pages/NotFound"
 
 const App = (props) => {
-  const [apartments, setApartments] = useState([]);
+  const [apartments, setApartments] = useState([])
 
   useEffect(() => {
-    readApartments();
-  }, []);
+    readApartments()
+  }, [])
 
   const readApartments = () => {
     fetch("/apartments")
       .then((response) => response.json())
       .then((payload) => {
-        console.log(payload);
-        setApartments(payload);
+        console.log(payload)
+        setApartments(payload)
       })
-      .catch((error) => console.log(error));
-  };
+      .catch((error) => console.log(error))
+  }
 
   return (
     <BrowserRouter>
@@ -44,7 +44,7 @@ const App = (props) => {
       </Routes>
       <Footer />
     </BrowserRouter>
-  );
-};
+  )
+}
 
-export default App;
+export default App

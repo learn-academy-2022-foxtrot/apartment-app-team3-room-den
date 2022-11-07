@@ -3,12 +3,12 @@ class ApartmentsController < ApplicationController
     apartments = Apartment.all
     render json: apartments
   end
-  
+
   def create
     apartment = Apartment.create(apartment_params)
     if apartment.valid?
       render json: apartment
-    else 
+    else
       render json: apartment.errors, status: 422
     end
   end
@@ -32,7 +32,7 @@ class ApartmentsController < ApplicationController
     end
   end
 
-#Handles the strong params so that a new apartment can be created only with all of the information available.
+  # Handles the strong params so that a new apartment can be created only with all of the information available.
   private
 
   def apartment_params
