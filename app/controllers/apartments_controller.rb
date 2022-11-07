@@ -32,7 +32,6 @@ class ApartmentsController < ApplicationController
     end
   end
 
-
 #Handles the strong params so that a new apartment can be created only with all of the information available.
   private
 
