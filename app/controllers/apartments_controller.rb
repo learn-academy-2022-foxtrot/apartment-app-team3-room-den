@@ -22,8 +22,20 @@ class ApartmentsController < ApplicationController
       render json: apartment.errors, status: :unprocessable_entity
     end
   end
+
+  def destroy
+    apartment = Apartment.find(params[:id])
+    if apartment.destroy
+      render json: apartment
+    else
+      render json: apartment.errors
+    end
+  end
+
+
 #Handles the strong params so that a new apartment can be created only with all of the information available.
   private
+
   def apartment_params
     params.require(:apartment).permit(:street, :city, :state, :manager, :email, :price, :bedrooms, :bathrooms, :pets, :image, :user_id)
   end
