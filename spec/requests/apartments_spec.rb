@@ -310,4 +310,30 @@ RSpec.describe "Apartments", type: :request do
       expect(apartment.image).to eq "https://cdnb.artstation.com/p/assets/images/images/029/104/549/large/nati-dias-sandy-house-3-nati.jpg?1596473772"
     end
   end
+
+  #-----destroy-----
+  describe "DELETE /destroy" do
+    it "deletes an apartment" do
+      apartment_params = {
+        apartment: {
+          street: "124 Conch Street",
+          city: "Bikini Bottom",
+          state: "Pacific Ocean",
+          manager: "Mustachio Jones",
+          email: "mjones@example.com",
+          price: "1000 sand dollars",
+          bedrooms: 2,
+          bathrooms: 2,
+          pets: "yes",
+          image:"https://images.thedailystar.net/sites/default/files/styles/very_big_201/public/feature/images/who_lives_in_a_pineapple_under_the_sea.jpg?itok=iYr37hhG",
+          user_id: user.id
+        }
+      }
+
+      post "/apartments", params: apartment_params
+      apartment = Apartment.first
+      delete "/apartments/#{apartment.id}"
+      expect(response).to have_http_status(200)
+    end
+  end
 end
